@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share</title>
+    <style>
+        /* Include your existing styles from home.ejs here */
+
+        /* General Reset */
+        body, h1, h2, p, ul, li, a {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background-color: #111; /* Dark background */
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.7); /* Slight transparency */
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            color: #f8a52b; /* Orange color */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: #fff;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f8a52b;
+        }
+
+        /* Form Styling */
+        .form-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-container h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-container input[type="text"],
+        .form-container textarea,
+        .form-container input[type="file"] {
+            width: 97%;
+            padding: 12px;
+            margin: 10px 0;
+            background-color: #222;
+            border: 1px solid #444;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .form-container textarea {
+            min-height: 150px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #f8a52b;
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #d38b20;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <h1>Eat and Share</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/share">Share</a></li>
+        </ul>
+    </div>
+
+    <div class="form-container">
+        <h2>Share Your Recipe</h2>
+        <form class="login-form" action="/share" method="POST" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Title" required>
+            <textarea name="ingredient" placeholder="Ingredients" required></textarea>
+            <input type="file" id="myFile" name="pic">
+            <button type="submit">Share Recipe</button>
+        </form>
+    </div>
+</body>
+</html>

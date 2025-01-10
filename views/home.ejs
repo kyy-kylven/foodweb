@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe</title>
+  <style>
+    /* General Reset */
+    body, h1, h2, p, ul, li, a {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #fff;
+      background-color: #111; /* Dark background */
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      background: url('/images/hero-bg.jpg') no-repeat center center/cover; /* Replace with your background image */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.7); /* Slight transparency */
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      color: #f8a52b; /* Orange color */
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #f8a52b;
+    }
+
+    /* Dropdown Menu */
+    .nav-links li ul.dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #333;
+      padding: 10px 0;
+    }
+
+    .nav-links li:hover ul.dropdown {
+      display: block;
+    }
+
+    .nav-links li ul.dropdown li a {
+      padding: 10px 20px;
+      display: block;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background: #f8a52b;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #d38b20;
+    }
+
+    .book-btn {
+      padding: 10px 25px;
+    }
+
+    /* Hero Content */
+    .hero-content {
+      text-align: center;
+      margin: auto 0;
+    }
+
+    .hero-content h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .hero-btn {
+      padding: 12px 30px;
+    }
+
+    /* Image Section */
+    .images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .images img {
+  width: 200px; /* Set a consistent width */
+  height: 150px; /* Set a consistent height */
+  object-fit: cover; /* Ensures the images maintain a good aspect ratio */
+  border-radius: 8px;
+  margin: 0 10px; /* Adds spacing between images */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+  </style>
+</head>
+<body>
+  <header class="hero-section">
+    <nav class="navbar">
+      <div class="logo">
+        <h1><i class="fas fa-utensils"></i> Eat and Share</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/menu">Menu</a></li>
+      </ul>
+      <a href="/share" class="btn book-btn">Share a Recipe</a>
+    </nav>
+    <div class="images"> 
+      <img src="/img/food.jpeg" alt="Delicious Food">
+      <img src="/img/food1.jpg" alt="Delicious Food">
+      <img src="/img/food2.jpeg" alt="Delicious Food">
+      <img src="/img/food3.jpg" alt="Delicious Food">
+      
+    </div>
+    
+    <div class="hero-content">
+      <h2>Enjoy Our Delicious Meal</h2>
+      <p>
+        Come and Eat in our wonderful Restaurant where you can Share your Recipe
+      </p>
+      <a href="/menu" class="btn hero-btn">Order A Food</a>
+    </div>
+  </header>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        /* Your existing styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: #f8a52b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none; /* Remove bullet points */
+        }
+
+        .nav-links a {
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .recipes-container {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .recipe-card {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .recipe-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .recipe-card h3 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+
+        .recipe-card p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .add-recipe-btn, .order-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background 0.3s;
+            margin: 5px;
+        }
+
+        .add-recipe-btn {
+            background-color: #f8a52b;
+            color: #fff;
+        }
+
+        .add-recipe-btn:hover {
+            background-color: #d38b20;
+        }
+
+        .order-btn {
+            background-color: red;
+            color: #fff;
+        }
+
+        .order-btn:hover {
+            background-color: darkred;
+        }
+
+        /* Home button styling */
+        .home-btn {
+            background-color: #333; /* Dark grey color */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .home-btn:hover {
+            background-color: #444; /* Slightly lighter grey for hover effect */
+        }
+
+        /* Success message */
+        .order-success-message {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <h1>Eat and Share</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/share">Share</a></li>
+            <li><a href="/menu">Menu</a></li>
+        </ul>
+    </div>
+
+    <div class="recipes-container">
+        <!-- Loop through the recipes and display them -->
+        <% recipes.forEach(function(recipe) { %>
+            <div class="recipe-card">
+                <img src="<%= recipe.pic %>" alt="<%= recipe.title %>">
+                <h3><%= recipe.title %></h3>
+                <p><%= recipe.ingredient %></p>
+                <!-- Order button that triggers the AJAX request -->
+                <button class="order-btn" onclick="orderRecipe('<%= recipe._id %>')">Order</button>
+            </div>
+        <% }) %>
+    </div>
+    
+    <!-- Success Message container -->
+    <div id="order-success-message" style="display:none; color: white; background-color: green; text-align: center; padding: 10px;"></div>
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="/share" class="add-recipe-btn">Add a New Recipe</a>
+        <a href="/home" class="home-btn">Home</a>
+    </div>
+
+    <script>
+        function orderRecipe(recipeId) {
+            // Send an AJAX request to order the recipe
+            fetch('/order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ recipeId: recipeId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show success message on successful order
+                if (data.success) {
+                    const successMessage = document.getElementById('order-success-message');
+                    successMessage.innerText = 'Order Successful!';
+                    successMessage.style.display = 'block';
+                } else {
+                    alert('Error placing order!');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
